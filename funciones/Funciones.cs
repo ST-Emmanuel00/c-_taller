@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Schema;
 
@@ -496,15 +498,386 @@ namespace Ejercicios.funciones
             }
         }
 
-            // Ejercicio 12
-            // Ejercicio 13
-            // Ejercicio 14
-            // Ejercicio 15
-            // Ejercicio 16
-            // Ejercicio 17
-            // Ejercicio 18
-            // Ejercicio 19
-            // Ejercicio 20
+         // Ejercicio 12
+
+
+        public static string procentaje_sexos ()
+        {
+
+            try
+            {
+
+                Console.WriteLine("Programa para decir que porcentaje de gente hay segun su sexo.");
+
+                string mensaje;
+
+                Console.Write("numero de hombres = ");
+                double hombres = double.Parse(Console.ReadLine());
+
+                if (hombres < 0 ) throw new Exception("No puede ser menor a cero");
+
+                Console.Write("numero de mujeres = ");
+                double mujeres = double.Parse(Console.ReadLine());
+
+                if (mujeres < 0 ) throw new Exception("No puede ser menor a cero");
+
+                double total = hombres + mujeres;
+
+                double porcetaje_hombres = (hombres/total)*100;
+
+                double porcetaje_mujeres = (mujeres/total)*100;
+
+                mensaje = "% hombres: " + porcetaje_hombres + "%" +  " % mujeres: " + porcetaje_mujeres + "%";
+
+                return mensaje;
+
+
+            }
+
+            catch (Exception error)
+            {
+
+                Console.WriteLine(error.Message);
+                return "Error calcular";
+
+            }
+        }
+
+        // Ejercicio 13
+
+        public static string ejercicio_13 ()
+        {
+
+            Console.WriteLine("Programa 13 para Dada las horas trabajadas de una persona y el valor por hora. Calcular su salario e imprimirlo. ");
+
+            Console.Write("Valor hora = ");
+            double valor_hora = double.Parse(Console.ReadLine());
+            if (valor_hora < 0 ) throw new Exception("No puede ser menor a cero");
+
+            Console.Write("Numero horas = ");
+            double horas = double.Parse(Console.ReadLine());
+            if (horas < 0 ) throw new Exception("No puede ser menor a cero");
+
+
+            double salario =  valor_hora * horas;
+
+            string mensaje = "Salario = " + salario;
+
+            return mensaje;
+
+        }
+        // Ejercicio 14
+
+        public static string ejercicio_14()
+        {
+
+            try
+            {
+                Console.WriteLine("Programa 14. Se trata de escribir el algoritmo que permita emitir la factura correspondiente a una compra de varios artículos (4) determinados, del que se adquieren una o varias unidades. El IVA es del 19%.. ");
+
+                double iva = 1.19;
+                string mensaje;
+                double total = 0;
+
+                for (int i = 1; i <= 4; i++)
+
+                {
+                    Console.WriteLine("1. Agregar producto");
+                    Console.WriteLine("0. Salir");
+
+                    int opcion = int.Parse(Console.ReadLine());
+
+                    if (opcion == 0) break;
+
+                    else if (opcion == 1)
+                    {
+
+                        Console.Write("Articulo = ");
+                        string articulo = Console.ReadLine();
+
+                        Console.Write("precio = ");
+                        double precio = double.Parse(Console.ReadLine());
+
+                        Console.Write("cantidad = ");
+                        int cantidad = int.Parse(Console.ReadLine());
+
+                        total = total + (precio * cantidad * iva);
+
+                    }
+
+                    else throw new Exception ("No es valido");
+
+                }
+
+                mensaje =  "compra total = " + total;
+
+                return mensaje;
+
+                }
+
+                catch (Exception error)
+                {
+
+                    Console.WriteLine(error.Message);
+                    return "Error calcular";
+
+                }
+
+            
+
+        }
+
+        // Ejercicio 15
+
+        public static string ejercicio_15()
+        {
+
+            try
+            {
+
+                Console.WriteLine("15.\tSuponga que un conductor le pide a usted que le haga un algoritmo para \tcalcular cuánto le corresponde en un día trabajado, teniendo en cuenta que tiene derecho a el 19% del total \trecaudado.");
+
+                double derecho = 0.19;
+                string mensaje;
+
+                Console.Write("Recaudo = ");
+                double recaudo = double.Parse(Console.ReadLine());
+
+                double total = recaudo * derecho;
+
+                mensaje = "Derecho a: " + total + " Dolares";
+
+                return mensaje;
+
+
+
+            }
+
+            catch (Exception error)
+                {
+
+                    Console.WriteLine(error.Message);
+                    return "Error calcular";
+
+                }
+        }
+
+        // Ejercicio 16
+
+        public static string ejercicio_16 ()
+        {
+
+            double aporte_salud = 0.125;
+            double aporte_pensiones = 0.16;
+            string mensaje;
+
+            try
+            {
+
+                
+
+                Console.Write("Salario del empleado =");
+                double salario = double.Parse(Console.ReadLine());
+                if (salario < 0 ) throw new Exception("No puede ser menor a cero");
+
+                Console.Write("Salario programado = ");
+                double ahorro_programado = double.Parse(Console.ReadLine());
+                if (ahorro_programado < 0 ) throw new Exception("No puede ser menor a cero");
+
+
+                salario = salario - ((salario * aporte_pensiones) - (salario * aporte_salud));
+
+                mensaje = $"Salario = {salario}";
+
+                return mensaje;
+
+
+            }
+
+            catch (Exception error)
+                {
+
+                    mensaje = error.Message;
+                    return "Error calcular";
+
+                }
+            
+
+            
+
+
+        }
+        // Ejercicio 17
+
+        public static string ejercicio_17()
+        {
+
+            string mensaje;
+            double cuota1 = 0.4;
+            double cuota2 = 0.25;
+            double cuota3 = 0.2;
+            double cuota4 = 0.15;
+
+            try
+            {
+
+                
+                Console.Write("Valor matricula =");
+                double matricula = double.Parse(Console.ReadLine());
+                if (matricula < 0 ) throw new Exception("No puede ser menor a cero");
+
+                mensaje = $"\tCuota 1 = {matricula * cuota1}\t Cuota 2 = {matricula * cuota2}\t Cuota 3 = {matricula * cuota3}\t Cuota 4 = {matricula * cuota4}\t";
+                
+                return mensaje;
+               
+            }
+
+             catch (Exception error)
+                {
+
+                    mensaje = error.Message;
+                    return "Error calcular";
+
+                }
+            
+
+        }
+        // Ejercicio 18 
+
+        public static string ejercicio_18 ()
+        { 
+            string mensaje;
+
+            try
+            {
+
+                Console.Write("Nombre = ");
+                string nombre = Console.ReadLine();
+
+                Console.Write("Porgrama = ");
+                string programa = Console.ReadLine();
+
+                List<double> notas = new List<double>();
+
+                double promedio = 0;
+                double acumulado = 0;
+
+                for (int i = 1; i <= 5; i++)
+                {
+                    Console.Write($"Nota {i} = ");
+                    double nota = double.Parse(Console.ReadLine());
+                    if (nota < 0 || nota > 5 ) throw new Exception("No es valido ome");
+
+                    notas.Add(nota);
+
+                }
+
+                foreach (double nota in notas)
+                {
+
+                    acumulado += nota;
+
+                }
+
+                promedio = acumulado / notas.Count();
+
+                mensaje = $"Nombre {nombre}\t Programa = {programa}\t Promedio = {promedio}";
+
+                return mensaje;
+
+
+            }
+
+            catch (Exception error)
+            {
+
+                mensaje = error.Message;
+                return mensaje;
+
+            }
+        }
+
+        // Ejercicio 20
+
+        public static string ejercicio_20()
+        {
+
+            try
+            {
+                Console.WriteLine("Programa 14. Se trata de escribir el algoritmo que permita emitir la factura correspondiente a una compra de varios artículos (4) determinados, del que se adquieren una o varias unidades. El IVA es del 19%.. ");
+
+                double iva = 1.19;
+                string mensaje;
+                double neto = 0;
+                double decuentar = 0.2;
+                double subtotal = 0;
+
+
+                for (int i = 1; i <= 4; i++)
+
+                {
+                    Console.WriteLine("1. Agregar producto");
+                    Console.WriteLine("0. Salir");
+
+                    int opcion = int.Parse(Console.ReadLine());
+
+                    if (opcion == 0) break;
+
+                    else if (opcion == 1)
+                    {
+
+                        Console.Write("precio = ");
+                        double precio = double.Parse(Console.ReadLine());
+
+                        Console.Write("cantidad = ");
+                        int cantidad = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("¿Aplica descuento?");
+                        Console.WriteLine("1. para SI");
+                        Console.WriteLine("2. para NO");
+
+                        int descuento = int.Parse(Console.ReadLine());
+
+                        if (descuento == 2) {
+                                
+                            subtotal = subtotal + (precio * cantidad);
+                                
+                        }
+ 
+
+                        else if (descuento == 1)
+                        {
+
+                            subtotal = subtotal + (precio * cantidad - (precio * cantidad * decuentar) );
+
+                        }
+
+                        else throw new Exception ("No es valido puto");
+
+                        neto = subtotal * iva;
+
+                    }
+
+                    else throw new Exception ("No es valido");
+
+                }
+
+                mensaje = $"Valor neto = {neto} \t Sub total = {subtotal} \t IVA = {subtotal * (iva - 1)} ";
+                return mensaje;
+
+            }
+            
+            catch (Exception error)
+                {
+
+                    Console.WriteLine(error.Message);
+                    return "Error calcular";
+
+                }
+
+            
+
+        }
             // Ejercicio 21
             // Ejercicio 22
             // Ejercicio 23

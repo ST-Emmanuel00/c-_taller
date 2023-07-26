@@ -44,6 +44,7 @@ namespace Ejercicios
                 Console.WriteLine("22. Para ejercicio 22");
                 Console.WriteLine("23. Para ejercicio 23");
                 Console.WriteLine("24. Para ejercicio 24");
+                Console.WriteLine("0. Para Salir");
 
 
                 int opcion = int.Parse(Console.ReadLine());
@@ -146,30 +147,57 @@ namespace Ejercicios
 
                         case 12:
                             Console.WriteLine("Ejercicio 12");
+
+                            mensaje = Funciones.procentaje_sexos();
+                            Console.WriteLine(mensaje);
                             break;
 
                         case 13:
                             Console.WriteLine("Ejercicio 13");
+
+                            mensaje = Funciones.ejercicio_13();
+                            Console.WriteLine(mensaje);
+
                             break;
 
                         case 14:
                             Console.WriteLine("Ejercicio 14");
+
+                            mensaje = Funciones.ejercicio_14();
+                            Console.WriteLine(mensaje);
+
                             break;
 
                         case 15:
                             Console.WriteLine("Ejercicio 15");
+
+                            mensaje = Funciones.ejercicio_15();
+                            Console.WriteLine(mensaje);
+
                             break;
 
                         case 16:
                             Console.WriteLine("Ejercicio 16");
+
+                            mensaje = Funciones.ejercicio_16();
+                            Console.WriteLine(mensaje);
+
                             break;
 
                         case 17:
                             Console.WriteLine("Ejercicio 17");
+
+                            mensaje = Funciones.ejercicio_17();
+                            Console.WriteLine(mensaje);
+
                             break;
 
                         case 18:
                             Console.WriteLine("Ejercicio 18");
+
+                            mensaje = Funciones.ejercicio_18();
+                            Console.WriteLine(mensaje);
+
                             break;
 
                         case 19:
@@ -178,23 +206,11 @@ namespace Ejercicios
 
                         case 20:
                             Console.WriteLine("Ejercicio 20");
+
+                            mensaje = Funciones.ejercicio_20();
+                            Console.WriteLine(mensaje);
                             break;
 
-                        case 21:
-                            Console.WriteLine("Ejercicio 21");
-                            break;
-
-                        case 22:
-                            Console.WriteLine("Ejercicio 22");
-                            break;
-
-                        case 23:
-                            Console.WriteLine("Ejercicio 23");
-                            break;
-
-                        case 24:
-                            Console.WriteLine("Ejercicio 24");
-                            break;
 
                         default:
                             Console.WriteLine("Opción inválida");
